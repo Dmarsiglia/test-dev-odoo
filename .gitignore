@@ -1,4 +1,5 @@
 enterprise 
 odoo
-odoo.config
+odoo.conf
+.venv
 .env
