@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <record id="loan_1" model="motorcycle.loan">
+            <field name="name">Pedro Ramirez - Ukko 2024</field>
+            <field name="interest_rate">.056</field>
+            <field name="loan_amount">15</field>
+            <field name="loan_term">32</field>
+            <field name="state">Draft</field>
+            <field name="date_application">27/01/2023</field>
+        </record>
+
+        <record id="loan_2" model="motorcycle.loan">
+            <field name="name">Cindy Chen - Indra 2024</field>
+            <field name="interest_rate">.09</field>
+            <field name="loan_amount">9</field>
+            <field name="loan_term">24</field>
+            <field name="state">Signed</field>
+            <field name="date_application">5 months Ago</field>
+        </record>
+
+        <record id="loan_3" model="motorcycle.loan">
+            <field name="name">Friedrich Keller - Raijin 2024</field>
+            <field name="interest_rate">.0548</field>
+            <field name="loan_amount">25</field>
+            <field name="loan_term">64</field>
+            <field name="state">Approved</field>
+            <field name="date_application">2 months ago</field>
+        </record>
+    </data> 
+</odoo>
+
