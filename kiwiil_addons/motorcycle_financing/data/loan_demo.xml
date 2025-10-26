@@ -5,8 +5,8 @@
             <field name="interest_rate">.056</field>
             <field name="loan_amount">15</field>
             <field name="loan_term">32</field>
-            <field name="state">Draft</field>
-            <field name="date_application">27/01/2023</field>
+            <field name="state">draft</field>
+            <field name="date_application">2025-01-27</field>
         </record>
 
         <record id="loan_2" model="motorcycle.loan">
@@ -14,8 +14,8 @@
             <field name="interest_rate">.09</field>
             <field name="loan_amount">9</field>
             <field name="loan_term">24</field>
-            <field name="state">Signed</field>
-            <field name="date_application">5 months Ago</field>
+            <field name="state">signed</field>
+            <field name="date_application">2025-06-27</field>
         </record>
 
         <record id="loan_3" model="motorcycle.loan">
@@ -23,8 +23,8 @@
             <field name="interest_rate">.0548</field>
             <field name="loan_amount">25</field>
             <field name="loan_term">64</field>
-            <field name="state">Approved</field>
-            <field name="date_application">2 months ago</field>
+            <field name="state">approved</field>
+            <field name="date_application">2025-08-27</field>
         </record>
     </data> 
 </odoo>
