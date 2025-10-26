@@ -11,4 +11,10 @@
     "demo": [
         'data/loan_demo.xml',
     ],
+    "data": [
+        'security/motorcycle_financing_groups.xml',
+        'security/ir.model.access.csv',
+        'views/loan_application_views.xml',
+        'views/motorcycle_financy_menu.xml',
+    ],
 }
