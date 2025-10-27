@@ -6,7 +6,7 @@ class Loan(models.Model):
 
     name = fields.Char(string='Aplication Number', required=True)
     currency_id = fields.Many2one(comodel_name='res.currency')
-    date_application = fields.Date(string='Application Date')
+    date_application = fields.Date(string='Application Date', default=fields.Date.context_today)
     date_approval = fields.Date(string='Approval Date')
     date_rejection = fields.Date(string='Rejection Date')
     date_signed = fields.Date(string='Signed On')
