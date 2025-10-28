@@ -1,4 +1,26 @@
 <odoo>
+
+    <record id="motorcycle_financing_search_view" model="ir.ui.view">
+        <field name="name">motorcycle.financing.search.view</field>
+        <field name="model">motorcycle.loan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="loan_amount"/>
+                <field name="down_payment"/>
+                <field name="interest_rate"/>
+                <field name="loan_term"/>
+                <field name="date_application"/>
+                <field name="state"/>
+                <filter name="filter_state_name" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="filter_state_sent" string="Sent" domain="[('state','=','sent')]"/>
+                <filter name="filter_state_approved" string="Approved" domain="[('state','=','approved')]"/>
+                <filter name="filter_application_date" string="Aplication Date" date="date_application" start_month="-3"/>
+                              
+            </search>
+        </field>
+    </record>
+
     <record id="motorcycle_financing_form_view" model="ir.ui.view">
         <field name="name">motorcycle.financing.fprm.view</field>
         <field name="model">motorcycle.loan</field>
@@ -13,22 +35,27 @@
                             <field name="name"/>
                         </h2>
                     </group>
+
                     <group>
-                       <h3>
-                        Customer Information
-                        </h3>
+                        <group>
+                            <separator string="Customer Information"/>
+                        </group>
+
+                        <group>
+                            <separator string="Application Information"/>
+                            <group>
+                                <field name="date_application"/>
+                                <field name="loan_amount"/>
+                                <field name="down_payment"/>
+                            </group>
+                            <group>
+                                <field name="interest_rate"/>
+                                <field name="loan_term"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
                     </group>
-                    <group>
-                        <h3>
-                            Application Information
-                        </h3>
-                        <field name="date_application"/>
-                        <field name="loan_amount"/>
-                        <field name="down_payment"/>
-                        <field name="interest_rate"/>
-                        <field name="loan_term"/>
-                        <field name="state"/>
-                    </group>
+                    
                     <notebook>
                         <page string="Dates">
                             <group>

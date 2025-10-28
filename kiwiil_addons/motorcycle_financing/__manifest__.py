@@ -7,7 +7,7 @@
     #'depends': ['crm','sales'],
     "author": "Dmarsiglia",
     "license": "OPL-1",
-    "aplication": "True",
+    "application": "True",
     "demo": [
         'data/loan_demo.xml',
     ],

@@ -1,26 +1,35 @@
 <odoo>
+    <data noupdate="0">
 
-    <!-- Categoría para agrupar los grupos (Esto SI es válido en Odoo 19) -->
-    <record id="module_category_motorcycle_financing" model="ir.module.category">
-        <field name="name">Motorcycle Dealership Financing</field>
-        <field name="sequence">10</field>
-    </record>
+        <!-- Categoría del módulo -->
+        <record id="module_category_motorcycle_financing" model="ir.module.category">
+            <field name="name">Motorcycle Financing</field>
+            <field name="description">Manage motorcycle loan applications and financing</field>
+            <field name="sequence">50</field>
+        </record>
 
-    <!-- Grupo básico -->
-    <record id="motorcycle_financing_user" model="res.groups">
-        <field name="name">Financing User</field>
-        <!-- Incluye acceso base de usuario interno -->
-        <!-- <field name="category_id" ref="module_category_motorcycle_financing"/> -->
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        
-    </record>
+        <!-- Privilegio para el módulo -->
+        <record id="res_groups_privilege_motorcycle_financing" model="res.groups.privilege">
+            <field name="name">Motorcycle Financing</field>
+            <field name="category_id" ref="module_category_motorcycle_financing"/>
+            <field name="description">Access to motorcycle financing features</field>
+        </record>
 
-    <!-- Grupo administrador -->
-    <record id="motorcycle_financing_manager" model="res.groups">
-        <field name="name">Financing Admin</field>
-        <!-- Hereda permisos del grupo anterior -->
-       <!--<field name="category_id" ref="module_category_motorcycle_financing"/> -->
-        <field name="implied_ids" eval="[(4, ref('motorcycle_financing.motorcycle_financing_user'))]"/>
-    </record>
+        <!-- Grupo básico de usuario -->
+        <record id="motorcycle_financing_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="privilege_id" ref="res_groups_privilege_motorcycle_financing"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Can view and create loan applications</field>
+        </record>
 
+        <!-- Grupo administrador -->
+        <record id="motorcycle_financing_manager" model="res.groups">
+            <field name="name">Administrator</field>
+            <field name="privilege_id" ref="res_groups_privilege_motorcycle_financing"/>
+            <field name="implied_ids" eval="[(4, ref('motorcycle_financing_user'))]"/>
+            <field name="comment">Full access to all motorcycle financing features and configuration</field>
+        </record>
+
+    </data>
 </odoo>
