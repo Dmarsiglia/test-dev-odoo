@@ -20,6 +20,11 @@ class Loan(models.Model):
         string='Categories',
         help='Tags for categorizing loan applications'
     )
+    documents_ids = fields.One2many(
+        comodel_name='motorcycle.loan.documents',
+        inverse_name = 'aplication_id',
+        string='Loan Documents'
+    )
     state = fields.Selection(
         selection=[
             ('draft', 'Draft'), 
@@ -34,3 +39,8 @@ class Loan(models.Model):
 
     )
     notes = fields.Html(string='Notes', copy=False)
+    parther_id = fields.Many2one(comodel_name='res.partner', string='Customer', required=True)
+    sale_order_id = fields.Many2one(comodel_name='sale.order', string='Related Sale Order')
+    user_id = fields.Many2one(comodel_name='res.users', string='Salesperson', default=lambda self: self.env.user)
+    product_template_id = fields.Many2one(comodel_name='product.product', string='Motorcycle', required=True)
+

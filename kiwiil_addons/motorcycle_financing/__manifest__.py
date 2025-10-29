@@ -4,7 +4,11 @@
     "category": "Kawiil/Custom Modules",
     "version": "19.0.0.0.0",
     "website": "Repo GitHub",
-    #'depends': ['crm','sales'],
+    'depends': [
+        'base',
+        'product',      
+        'sale_management',
+    ],
     "author": "Dmarsiglia",
     "license": "OPL-1",
     "application": "True",
@@ -17,6 +21,7 @@
         'security/ir.model.access.csv',
         'views/loan_application_views.xml',
         'views/loan_application_tag.xml',
+        'views/loan_document_type.xml',
         'views/motorcycle_financy_menu.xml',
         
     ],

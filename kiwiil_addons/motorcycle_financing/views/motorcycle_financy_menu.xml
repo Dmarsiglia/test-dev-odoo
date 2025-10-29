@@ -5,6 +5,7 @@
         </menuitem>
         <menuitem id="loan_application_menu_settings" name="Settings">
             <menuitem id="loan_application_menu_tags_action" name="Loan Tags" action="loan_application_tags_menu"/>
+            <menuitem id="loan_application_menu_document_type_action" name="Document Type" action="loan_application_document_type_menu"/>
         </menuitem>
     </menuitem>
 </odoo>
