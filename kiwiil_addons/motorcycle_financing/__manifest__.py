@@ -12,9 +12,9 @@
     "author": "Dmarsiglia",
     "license": "OPL-1",
     "application": "True",
-    "demo": [
-        'data/loan_demo.xml',
-    ],
+    # "demo": [
+    #     'data/loan_demo.xml',
+    # ],
     "data": [
         'security/motorcycle_financing_groups.xml',
        # 'security/loan_application_tags_groups.xml',
