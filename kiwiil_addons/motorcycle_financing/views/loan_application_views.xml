@@ -74,6 +74,11 @@
                                 <field name="notes"/>
                             </group>
                         </page>
+                        <page string="Tags">
+                            <group>
+                                <field name="tags"/>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>                
             </form>

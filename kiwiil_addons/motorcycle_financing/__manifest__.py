@@ -13,8 +13,11 @@
     ],
     "data": [
         'security/motorcycle_financing_groups.xml',
+       # 'security/loan_application_tags_groups.xml',
         'security/ir.model.access.csv',
         'views/loan_application_views.xml',
+        'views/loan_application_tag.xml',
         'views/motorcycle_financy_menu.xml',
+        
     ],
 }

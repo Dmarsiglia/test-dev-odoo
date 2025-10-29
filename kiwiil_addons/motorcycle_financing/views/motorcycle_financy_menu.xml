@@ -3,5 +3,8 @@
         <menuitem id="loan_application_menu_section1" name="Loan Applications">
             <menuitem id="loan_application_menu_action" name="Manage Loan Applications" action="loan_application_menu"/>
         </menuitem>
+        <menuitem id="loan_application_menu_settings" name="Settings">
+            <menuitem id="loan_application_menu_tags_action" name="Loan Tags" action="loan_application_tags_menu"/>
+        </menuitem>
     </menuitem>
 </odoo>

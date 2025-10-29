@@ -15,6 +15,11 @@ class Loan(models.Model):
     loan_amount = fields.Monetary(string='Loan Amount', currency_field='currency_id')
     loan_term = fields.Integer(string='Loan Term (Months)', required=True, default=36)
     rejection_reason = fields.Text(string='Rejection Reason', copy=False)
+    tags = fields.Many2many(
+        comodel_name='motorcycle.loan.tag',
+        string='Categories',
+        help='Tags for categorizing loan applications'
+    )
     state = fields.Selection(
         selection=[
             ('draft', 'Draft'), 

@@ -1,1 +1,1 @@
-from . import loan_application
+from . import loan_application, loan_application_tag

@@ -1,0 +1,20 @@
+<odoo>
+    <record id="loan_application_tags_menu" model="ir.actions.act_window">
+        <field name="name">Applications Tags</field>
+        <field name="res_model">motorcycle.loan.tag</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="motorcycle_financing_list_tags_view" model="ir.ui.view">
+        <field name="name">motorcycle.financing.list.tags.view</field>
+        <field name="model">motorcycle.loan.tag</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="color"/>
+            </list>
+    </field>
+</record>
+
+</odoo> 
