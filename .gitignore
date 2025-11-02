@@ -3,3 +3,6 @@ odoo
 odoo.conf
 .venv
 .env
+\\wsl.localhost\Ubuntu\home\dmarsiglia\dev-odoo\test-dev-odoo\kiwiil_addons\studio_customization
+kiwiil_addons/studio_customization
+/home/dmarsiglia/dev-odoo/test-dev-odoo/odoo_manager.sh
