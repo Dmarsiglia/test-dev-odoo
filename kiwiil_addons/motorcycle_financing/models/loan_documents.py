@@ -5,7 +5,7 @@ class LoanDocuments(models.Model):
     _description = 'Motorcycle Loan Documents Model'
 
     name = fields.Char(string='Document Name', required=True)
-    attachment = fields.Text(string='attachment')
+    attachment = fields.Binary(string='attachment')
     type = fields.Many2one('motorcycle.loan.document.type', string='Document Type')
     aplication_id = fields.Many2one('motorcycle.loan', string='Loan Application')
     state = fields.Selection(

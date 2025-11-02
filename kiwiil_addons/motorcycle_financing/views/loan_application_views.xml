@@ -48,6 +48,7 @@
                                 <field name="sale_order_id"/>
                                 <field name="user_id"/>
                                 <field name="product_template_id"/>
+                                <field name="currency_id"/>
                             </group>
                         </group>
 
@@ -55,13 +56,13 @@
                             <separator string="Application Information"/>
                             <group>
                                 <field name="date_application"/>
-                                <field name="loan_amount"/>
-                                <field name="down_payment"/>
+                                <field name="loan_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="down_payment" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                             </group>
                             <group>
-                                <field name="interest_rate"/>
+                                <field name="interest_rate" widget="percentage"/>
                                 <field name="loan_term"/>
-                                <field name="state"/>
+                                <field name="state" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'" decoration-muted="state == 'draft'"/>
                             </group>
                         </group>
                     </group>
@@ -117,8 +118,8 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
-                <field name="loan_amount"/>
-                <field name="down_payment"/>
+                <field name="loan_amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="down_payment" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 <field name="interest_rate"/>
                 <field name="loan_term"/>
                 <field name="date_application"/>
