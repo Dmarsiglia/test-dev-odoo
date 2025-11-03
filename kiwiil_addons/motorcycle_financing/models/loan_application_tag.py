@@ -3,6 +3,9 @@ from odoo import models, fields
 class LoanCategory(models.Model):
     _name = 'motorcycle.loan.tag'
     _description = 'Motorcycle Loan Tag Model'
+    _sql_constraints = [
+        ('check_name_unique',"UNIQUE(name)", 'Category name must be unique.')
+    ]
 
     name = fields.Char(string='Category Name', required=True)
     description = fields.Text(string='Description')

@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 class LoanDocuments(models.Model):
     _name = 'motorcycle.loan.documents'
@@ -17,3 +17,16 @@ class LoanDocuments(models.Model):
          default='review', copy=False
 
     )
+
+    def action_change_state_approved(self):
+        for record in self:
+            record.state = 'approved'
+
+    def action_change_state_rejected(self):
+        for record in self:
+            record.state = 'rejected'
+
+    @api.onchange('attachment')
+    def _onchange_state_new(self):
+        for record in self:
+            record.state = 'review'

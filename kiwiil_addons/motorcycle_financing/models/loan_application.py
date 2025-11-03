@@ -1,8 +1,12 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 class Loan(models.Model):
     _name = 'motorcycle.loan'
     _description = 'Motorcycle Loan Model'
+    _sql_constraints = [
+        ('check_down_payment',"CHECK(down_payment >= 0)", 'Downpayment must be less than Sale Order Total.'),
+    ]
 
     name = fields.Char(string='Aplication Number', required=True)
     date_application = fields.Date(string='Application Date', default=fields.Date.context_today)
@@ -69,7 +73,7 @@ class Loan(models.Model):
         compute='_compute_loan_amount',
         inverse='_inverse_loan_amount')
 
-    
+    @api.depends('sale_order_total', 'down_payment')
     def _compute_loan_amount(self):
         for record in self:
             record.loan_amount = record.sale_order_total - record.down_payment
@@ -78,4 +82,32 @@ class Loan(models.Model):
         for record in self:
             record.down_payment = record.sale_order_total - record.loan_amount
 
+    def action_change_state_approved(self):
+        for record in self:
+            record.state = 'approved'
+            record.date_approval = fields.Date.context_today(record)
+    
+    def action_change_state_rejected(self):
+        for record in self:
+            if not record.rejection_reason:
+                raise UserError(_("Rejection reason is required to reject the application."))
+            record.state = 'rejected'
+            record.date_rejection = fields.Date.context_today(record)
 
+    def action_sent(self):
+        for record in self:
+            # pending_docs = self.env['motorcycle.loan.documents'].search([
+            #     ('id', 'in', record.documents_ids.ids),
+            #     ('state', '!=', 'approved')
+            # ])
+            if record.documents_ids.filtered(lambda doc: doc.state != 'approved'):
+                raise UserError(_("All documents must be approved before sending the application."))
+            else:
+                record.state = 'sent'
+                record.date_application = fields.Date.context_today(record)
+
+    @api.constrains('loan_amount', 'sale_order_total')
+    def _check_loan_amount(self):
+        for record in self:
+            if record.loan_amount < 0 or record.loan_amount > record.sale_order_total:
+                raise ValidationError(_('Loan amount must be between 0 and the sale order total.'))
