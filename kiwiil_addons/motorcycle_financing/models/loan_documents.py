@@ -14,7 +14,8 @@ class LoanDocuments(models.Model):
         selection=[
             ('review', 'Review'), 
             ('approved', 'Approved'), 
-            ('rejected', 'Rejected'), 
+            ('rejected', 'Rejected'),
+            ('pending', 'Pending') 
         ], 
          default='review', copy=False
 
