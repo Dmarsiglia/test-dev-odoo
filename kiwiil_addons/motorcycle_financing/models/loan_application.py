@@ -4,7 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 class Loan(models.Model):
     _name = 'motorcycle.loan'
     _description = 'Motorcycle Loan Model'
-
+    _order = 'date_application desc, name desc'
 
     name = fields.Char(string='Aplication Number', required=True)
     date_application = fields.Date(string='Application Date', default=fields.Date.context_today)
@@ -82,8 +82,11 @@ class Loan(models.Model):
 
     def action_change_state_approved(self):
         for record in self:
-            record.state = 'approved'
-            record.date_approval = fields.Date.context_today(record)
+            if record.state != 'approved':
+                record.state = 'approved'
+                record.date_approval = fields.Date.context_today(record)
+            else:
+                raise UserError(_("The application is already approved."))
     
     def action_change_state_rejected(self):
         for record in self:

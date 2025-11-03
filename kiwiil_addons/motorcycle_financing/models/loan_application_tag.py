@@ -3,7 +3,9 @@ from odoo import models, fields
 class LoanCategory(models.Model):
     _name = 'motorcycle.loan.tag'
     _description = 'Motorcycle Loan Tag Model'
+    _order = 'sequence asc'
 
+    sequence = fields.Integer(string='Sequence', default=1)
     name = fields.Char(string='Category Name', required=True)
     description = fields.Text(string='Description')
     color = fields.Integer(string='Color', help='Color code for the category')

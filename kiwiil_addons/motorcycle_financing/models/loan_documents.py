@@ -3,7 +3,9 @@ from odoo import models, fields, api
 class LoanDocuments(models.Model):
     _name = 'motorcycle.loan.documents'
     _description = 'Motorcycle Loan Documents Model'
+    _order = 'sequence asc, name asc'
 
+    sequence = fields.Integer(string='Sequence', default=1)
     name = fields.Char(string='Document Name', required=True)
     attachment = fields.Binary(string='attachment')
     type = fields.Many2one('motorcycle.loan.document.type', string='Document Type')

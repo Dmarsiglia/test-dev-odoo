@@ -27,9 +27,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_sent" string="Sent" type="object" class="oe_highlight"/>
-                    <button name="action_change_state_approved" string="Approve" type="object" class="oe_highlight"/> 
-                    <button name="action_change_state_rejected" string="Reject" type="object" class="oe_highlight"/>
+                    <button name="action_sent" string="Sent" type="object" class="oe_highlight" invisible="state in ('approved')"/>
+                    <button name="action_change_state_approved" string="Approve" type="object" class="oe_highlight" /> 
+                    <button name="action_change_state_rejected" string="Reject" type="object" class="oe_highlight" invisible="state in ('approved')"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,sent,approved,rejected,signed" statusbar_colors='{"draft":"grey","sent":"blue","approved":"green","rejected":"red","signed":"darkgreen"}'/>
                 </header>
                 <sheet>
@@ -65,7 +65,7 @@
                             <group>
                                 <field name="interest_rate" widget="percentage"/>
                                 <field name="loan_term"/>
-                                <field name="state" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'" decoration-muted="state == 'draft'"/>
+                                <field name="state" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'" decoration-muted="state == 'draft'" readonly="state == 'sent'"/>
                             </group>
                         </group>
                     </group>
@@ -96,7 +96,7 @@
                                     <button name="action_change_state_approved" string="Approve" type="object" icon="fa-check"/>
                                     <button name="action_change_state_rejected" string="Reject" type="object" icon="fa-times"/>
                                     <field name="attachment"/>
-                                    <field name="state"/>
+                                    <field name="state" decoration-success="state == 'approved'" decoration-danger="state == 'rejected'" decoration-muted="state == 'Review'"/>
                                 </list>
                                 <form>
                                     <group>
