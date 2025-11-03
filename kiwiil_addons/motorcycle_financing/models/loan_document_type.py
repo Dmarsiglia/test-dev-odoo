@@ -6,3 +6,8 @@ class LoanDocumentType(models.Model):
 
     name = fields.Char(string='Document Type Name', required=True)
     active = fields.Boolean(string='Active', default=True)
+
+    _check_name_unique = models.Constraint(
+        "UNIQUE(name)", 
+        'Document type name must be unique.'
+    )

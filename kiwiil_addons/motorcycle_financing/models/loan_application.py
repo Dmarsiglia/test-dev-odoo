@@ -4,9 +4,7 @@ from odoo.exceptions import UserError, ValidationError
 class Loan(models.Model):
     _name = 'motorcycle.loan'
     _description = 'Motorcycle Loan Model'
-    _sql_constraints = [
-        ('check_down_payment',"CHECK(down_payment >= 0)", 'Downpayment must be less than Sale Order Total.'),
-    ]
+
 
     name = fields.Char(string='Aplication Number', required=True)
     date_application = fields.Date(string='Application Date', default=fields.Date.context_today)
@@ -111,3 +109,8 @@ class Loan(models.Model):
         for record in self:
             if record.loan_amount < 0 or record.loan_amount > record.sale_order_total:
                 raise ValidationError(_('Loan amount must be between 0 and the sale order total.'))
+
+    _check_down_payment = models.Constraint(
+        "CHECK(down_payment >= 0)", 
+        'Downpayment must be less than Sale Order Total.'
+    )  
